@@ -1,11 +1,11 @@
 'use strict';
 
-const API_URL = "http://numbersapi.com"
+const API_URL = "http://numbersapi.com";
 
 const FAV_NUM = 7;
 const BATCH_OF_NUMS = [1, 2, 3, 4, 5];
 
-const $numFactsArea = $('#num-facts-area')
+const $numFactsArea = $('#num-facts-area');
 
 // do a axios request for one number
 // do a batch request to the API for 3(?) numbers
@@ -19,7 +19,7 @@ async function getNumberAPI(num) {
 
 async function getBatchNumFacts(nums) {
 
-    let stringNums = nums.join()
+    let stringNums = nums.join();
     const response = await axios.get(`${API_URL}/${stringNums}?json`);
 
     let batchFacts = '';
@@ -31,7 +31,7 @@ async function getBatchNumFacts(nums) {
 
 async function getFourFacts(favNum) {
 
-    let favFactsString = ''
+    let favFactsString = '';
     for (let i = 0; i < 4; i++) {
         favFactsString += await getNumberAPI(favNum);
     }
@@ -47,7 +47,7 @@ async function getNumFacts() {
     $numFactsArea.append(`<p>${batchNumFacts}`);
 
     let favNumFacts = await getFourFacts(FAV_NUM);
-    $numFactsArea.append(`<p>${favNumFacts}`)
+    $numFactsArea.append(`<p>${favNumFacts}`);
 
 }
 
